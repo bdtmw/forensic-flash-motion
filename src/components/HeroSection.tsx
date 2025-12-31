@@ -2,24 +2,30 @@ import { Button } from './ui/button';
 import TypewriterText from './TypewriterText';
 import GlitchText from './GlitchText';
 import { Phone, Calendar, ChevronDown } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
+import heroBg from '@/assets/digital-forensics-businessman-working-with-virtual-2025-12-09-08-25-33-utc.mov';
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <img 
-          src={heroBg} 
-          alt="Digital forensics background" 
+        <video
+          src={heroBg}   // your video file or URL
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover opacity-40"
-        />
+        >
+          Your browser does not support the video tag.
+        </video>
+
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-primary/10" />
       </div>
 
       {/* Animated grid overlay */}
       <div className="absolute inset-0 forensic-grid opacity-30" />
-      
+
       {/* Animated data streams */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(8)].map((_, i) => (
@@ -63,9 +69,9 @@ const HeroSection = () => {
 
           {/* Main heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            <GlitchText 
-              text="DERICK" 
-              className="block text-foreground glow-text" 
+            <GlitchText
+              text="DERICK"
+              className="block text-foreground glow-text"
             />
             <span className="block text-primary glow-text">
               <TypewriterText text="DOWNS" delay={500} speed={100} />
@@ -103,7 +109,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator */}
-      <a 
+      <a
         href="#about"
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 animate-fade-in-up delay-700"
       >
@@ -114,7 +120,7 @@ const HeroSection = () => {
       {/* Decorative corner elements */}
       <div className="absolute top-20 right-10 w-32 h-32 border border-primary/20 opacity-50 animate-pulse" />
       <div className="absolute bottom-20 left-10 w-24 h-24 border border-secondary/20 opacity-50 animate-pulse" style={{ animationDelay: '1s' }} />
-      
+
       {/* Glowing orbs */}
       <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-secondary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
