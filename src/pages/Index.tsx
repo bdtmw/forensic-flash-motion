@@ -1,12 +1,34 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
+import ServicesSection from '@/components/ServicesSection';
+import ClientsSection from '@/components/ClientsSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+import ScanlineOverlay from '@/components/ScanlineOverlay';
+import ParticleField from '@/components/ParticleField';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="relative min-h-screen bg-background text-foreground noise-overlay">
+      {/* Background effects */}
+      <ParticleField />
+      <ScanlineOverlay />
+      
+      {/* Navigation */}
+      <Navbar />
+      
+      {/* Main content */}
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <ClientsSection />
+        <ContactSection />
+      </main>
+      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
