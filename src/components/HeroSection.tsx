@@ -2,22 +2,51 @@ import { Button } from './ui/button';
 import TypewriterText from './TypewriterText';
 import GlitchText from './GlitchText';
 import { Phone, Calendar, ChevronDown } from 'lucide-react';
+import heroBg from '@/assets/hero-bg.jpg';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center forensic-grid overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0">
+        <img 
+          src={heroBg} 
+          alt="Digital forensics background" 
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-primary/10" />
+      </div>
+
+      {/* Animated grid overlay */}
+      <div className="absolute inset-0 forensic-grid opacity-30" />
       
       {/* Animated data streams */}
-      <div className="absolute inset-0 overflow-hidden opacity-20">
-        {[...Array(5)].map((_, i) => (
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-px h-32 data-stream"
+            className="absolute w-px data-stream"
             style={{
-              left: `${20 + i * 15}%`,
-              animationDelay: `${i * 0.5}s`,
+              left: `${10 + i * 12}%`,
+              height: `${100 + Math.random() * 100}px`,
+              animationDelay: `${i * 0.7}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-primary/50 rounded-full float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 6}s`,
+              animationDuration: `${4 + Math.random() * 4}s`,
             }}
           />
         ))}
@@ -83,8 +112,12 @@ const HeroSection = () => {
       </a>
 
       {/* Decorative corner elements */}
-      <div className="absolute top-20 right-10 w-32 h-32 border border-primary/20 opacity-50" />
-      <div className="absolute bottom-20 left-10 w-24 h-24 border border-secondary/20 opacity-50" />
+      <div className="absolute top-20 right-10 w-32 h-32 border border-primary/20 opacity-50 animate-pulse" />
+      <div className="absolute bottom-20 left-10 w-24 h-24 border border-secondary/20 opacity-50 animate-pulse" style={{ animationDelay: '1s' }} />
+      
+      {/* Glowing orbs */}
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-secondary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
     </section>
   );
 };

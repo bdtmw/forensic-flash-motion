@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
-import { User, ArrowRight, Fingerprint } from 'lucide-react';
+import { ArrowRight, Fingerprint, Shield, Code, TrendingUp } from 'lucide-react';
+import profileHero from '@/assets/profile-hero.jpg';
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,6 +24,12 @@ const AboutSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  const skills = [
+    { icon: Shield, label: 'Digital Forensics' },
+    { icon: Code, label: 'Web Development' },
+    { icon: TrendingUp, label: 'Growth Hacking' },
+  ];
+
   return (
     <section 
       id="about" 
@@ -43,15 +50,39 @@ const AboutSection = () => {
                 <Fingerprint size={120} strokeWidth={1} />
               </div>
               
+              {/* Glowing frame effect */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-primary opacity-30 blur-xl" />
+              
               {/* Main image container */}
-              <div className="case-file p-2">
-                <div className="bg-gradient-to-br from-muted to-card p-8 flex items-center justify-center aspect-square">
-                  <div className="text-center">
-                    <User size={120} className="mx-auto text-primary/50 mb-4" />
-                    <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
+              <div className="case-file p-2 relative">
+                <div className="relative overflow-hidden">
+                  {/* Actual profile image */}
+                  <img 
+                    src={profileHero} 
+                    alt="Derick Downs - Digital Forensics Expert" 
+                    className="w-full aspect-square object-cover"
+                  />
+                  
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                  
+                  {/* Scan line effect */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-0.5 bg-primary/50 animate-scan-vertical" />
+                  </div>
+
+                  {/* Corner decorations */}
+                  <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-primary" />
+                  <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-primary" />
+                  <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-primary" />
+                  <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-primary" />
+
+                  {/* Name overlay */}
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="font-mono text-xs text-primary mb-1 uppercase tracking-widest">
                       Subject Profile
                     </div>
-                    <div className="font-mono text-2xl text-primary mt-2">
+                    <div className="font-mono text-2xl text-foreground glow-text">
                       DERICK DOWNS
                     </div>
                   </div>
@@ -62,6 +93,22 @@ const AboutSection = () => {
               <div className="absolute -bottom-4 left-4 evidence-tag">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span>Status: Available</span>
+              </div>
+
+              {/* Floating skill badges */}
+              <div className="absolute -right-4 top-1/4 space-y-3">
+                {skills.map((skill, i) => (
+                  <div
+                    key={skill.label}
+                    className={`flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-3 py-2 ${
+                      isVisible ? 'animate-fade-in-up' : 'opacity-0'
+                    }`}
+                    style={{ animationDelay: `${(i + 2) * 200}ms` }}
+                  >
+                    <skill.icon className="w-4 h-4 text-primary" />
+                    <span className="font-mono text-xs text-muted-foreground">{skill.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -95,11 +142,17 @@ const AboutSection = () => {
                 { value: '100+', label: 'Clients' },
                 { value: '∞', label: 'Dedication' },
               ].map((stat, i) => (
-                <div key={i} className="text-center">
-                  <div className="text-3xl md:text-4xl font-mono font-bold text-primary glow-text">
+                <div 
+                  key={i} 
+                  className="text-center p-4 bg-card/50 border border-border relative overflow-hidden group hover:border-primary/50 transition-colors duration-300"
+                >
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  <div className="text-3xl md:text-4xl font-mono font-bold text-primary glow-text relative z-10">
                     {stat.value}
                   </div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1 relative z-10">
                     {stat.label}
                   </div>
                 </div>

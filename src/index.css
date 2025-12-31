@@ -240,6 +240,19 @@
     );
     animation: dataStream 3s linear infinite;
   }
+
+  /* Scan effects */
+  .animate-scan-vertical {
+    animation: scanVertical 2s ease-in-out infinite;
+  }
+
+  .animate-scan-horizontal {
+    animation: scanHorizontal 2s ease-in-out infinite;
+  }
+
+  .scan-effect {
+    animation: scanVertical 3s linear infinite;
+  }
 }
 
 /* Keyframes */
@@ -298,6 +311,20 @@
 @keyframes typing {
   from { width: 0; }
   to { width: 100%; }
+}
+
+@keyframes scanVertical {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(100vh); }
+  51% { transform: translateY(-100%); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes scanHorizontal {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  51% { transform: translateX(-100%); }
+  100% { transform: translateX(-100%); }
 }
 
 /* Custom scrollbar */
