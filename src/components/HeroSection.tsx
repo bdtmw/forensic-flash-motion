@@ -10,7 +10,7 @@ const HeroSection = () => {
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <video
-          src="https://todolist.freelancerportfolio.me/wp-content/uploads/2025/12/digital-forensics-businessman-working-with-virtual-2025-12-09-08-25-33-utc.mov"   // your video file or URL
+          src="https://todolist.freelancerportfolio.me/wp-content/uploads/2025/12/digital-forensics-businessman-working-with-virtual-2025-12-09-08-25-33-utc-1.mp4"   // your video file or URL
           autoPlay
           muted
           loop
