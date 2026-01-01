@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
 import { Button } from './ui/button';
+import demoReel from '@/assets/demo-reel.mp4';
 
 const VideoShowcase = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState('00:00');
+  const [duration, setDuration] = useState('00:00');
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -26,6 +30,27 @@ const VideoShowcase = () => {
     return () => observer.disconnect();
   }, []);
 
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const current = videoRef.current.currentTime;
+      const total = videoRef.current.duration;
+      setProgress((current / total) * 100);
+      setCurrentTime(formatTime(current));
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      setDuration(formatTime(videoRef.current.duration));
+    }
+  };
+
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
@@ -41,6 +66,22 @@ const VideoShowcase = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
+    }
+  };
+
+  const handleFullscreen = () => {
+    if (videoRef.current) {
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen();
+      }
+    }
+  };
+
+  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (videoRef.current) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickPosition = (e.clientX - rect.left) / rect.width;
+      videoRef.current.currentTime = clickPosition * videoRef.current.duration;
     }
   };
 
@@ -77,62 +118,91 @@ const VideoShowcase = () => {
             {/* Video wrapper */}
             <div className="relative bg-card border border-border overflow-hidden">
               {/* Corner decorations */}
-              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary z-10" />
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary z-10" />
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary z-10" />
-              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary z-10" />
+              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary z-20" />
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary z-20" />
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary z-20" />
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary z-20" />
 
-              {/* Video placeholder with animated gradient */}
-              <div className="aspect-video bg-gradient-to-br from-muted via-card to-muted relative overflow-hidden">
-                {/* Animated scanning effect */}
-                <div className="absolute inset-0">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent animate-pulse" />
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent scan-effect" />
-                </div>
+              {/* Video element */}
+              <div className="aspect-video bg-background relative overflow-hidden">
+                <video
+                  ref={videoRef}
+                  src={demoReel}
+                  className="w-full h-full object-cover"
+                  muted={isMuted}
+                  loop
+                  playsInline
+                  onTimeUpdate={handleTimeUpdate}
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onClick={togglePlay}
+                />
 
-                {/* Placeholder content */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center backdrop-blur-sm border border-primary/30 group-hover:scale-110 transition-transform duration-300">
+                {/* Play button overlay when paused */}
+                {!isPlaying && (
+                  <div 
+                    className="absolute inset-0 flex items-center justify-center bg-background/30 backdrop-blur-sm cursor-pointer"
+                    onClick={togglePlay}
+                  >
+                    <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center backdrop-blur-sm border border-primary/30 hover:scale-110 transition-transform duration-300 hover:bg-primary/30">
                       <Play className="w-10 h-10 text-primary ml-1" />
                     </div>
-                    <p className="font-mono text-muted-foreground">
-                      [ Demo Reel Coming Soon ]
-                    </p>
                   </div>
+                )}
+
+                {/* Scan line overlay */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-scan-vertical" />
                 </div>
 
                 {/* Overlay grid pattern */}
-                <div className="absolute inset-0 forensic-grid opacity-20" />
+                <div className="absolute inset-0 forensic-grid opacity-10 pointer-events-none" />
               </div>
 
               {/* Video controls */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <div className="flex gap-2">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 via-background/60 to-transparent p-4">
+                {/* Progress bar */}
+                <div 
+                  className="w-full h-1 bg-muted rounded-full overflow-hidden cursor-pointer mb-3"
+                  onClick={handleProgressClick}
+                >
+                  <div 
+                    className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-150"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={togglePlay}
+                      className="bg-background/50 backdrop-blur-sm hover:bg-background/80 text-foreground"
+                    >
+                      {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={toggleMute}
+                      className="bg-background/50 backdrop-blur-sm hover:bg-background/80 text-foreground"
+                    >
+                      {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                    </Button>
+                    <span className="font-mono text-xs text-muted-foreground flex items-center ml-2">
+                      {currentTime} / {duration}
+                    </span>
+                  </div>
+
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={togglePlay}
-                    className="bg-background/50 backdrop-blur-sm hover:bg-background/80"
+                    onClick={handleFullscreen}
+                    className="bg-background/50 backdrop-blur-sm hover:bg-background/80 text-foreground"
                   >
-                    {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={toggleMute}
-                    className="bg-background/50 backdrop-blur-sm hover:bg-background/80"
-                  >
-                    {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                    <Maximize className="w-4 h-4" />
                   </Button>
                 </div>
-
-                {/* Progress bar placeholder */}
-                <div className="flex-1 mx-4 h-1 bg-muted rounded-full overflow-hidden">
-                  <div className="w-1/3 h-full bg-gradient-to-r from-primary to-secondary rounded-full" />
-                </div>
-
-                <span className="font-mono text-xs text-muted-foreground">00:00 / 02:30</span>
               </div>
             </div>
           </div>

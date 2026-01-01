@@ -1,44 +1,47 @@
 import { useEffect, useRef, useState } from 'react';
 import { ExternalLink, Eye } from 'lucide-react';
-import serviceWeb from '@/assets/service-web.jpg';
-import serviceForensics from '@/assets/service-forensics.jpg';
-import serviceEcommerce from '@/assets/service-ecommerce.jpg';
+import portfolioEcommerce from '@/assets/portfolio-ecommerce.jpg';
+import portfolioForensics from '@/assets/portfolio-forensics.jpg';
+import portfolioCorporate from '@/assets/portfolio-corporate.jpg';
+import portfolioBrand from '@/assets/portfolio-brand.jpg';
+import portfolioSecurity from '@/assets/portfolio-security.jpg';
+import portfolioMobile from '@/assets/portfolio-mobile.jpg';
 
 const portfolioItems = [
   {
     title: 'E-Commerce Platform',
     category: 'Web Development',
-    image: serviceEcommerce,
+    image: portfolioEcommerce,
     description: 'Full-stack online store with payment integration',
   },
   {
     title: 'Forensic Analysis Tool',
     category: 'Digital Forensics',
-    image: serviceForensics,
+    image: portfolioForensics,
     description: 'Custom investigation and data recovery software',
   },
   {
     title: 'Corporate Website',
     category: 'Web Design',
-    image: serviceWeb,
+    image: portfolioCorporate,
     description: 'Modern responsive website with CMS integration',
   },
   {
     title: 'Brand Identity System',
     category: 'Design',
-    image: serviceWeb,
+    image: portfolioBrand,
     description: 'Complete visual identity and brand guidelines',
   },
   {
     title: 'Security Audit Platform',
     category: 'Digital Forensics',
-    image: serviceForensics,
+    image: portfolioSecurity,
     description: 'Enterprise security monitoring dashboard',
   },
   {
     title: 'Mobile Commerce App',
     category: 'App Development',
-    image: serviceEcommerce,
+    image: portfolioMobile,
     description: 'Cross-platform shopping experience',
   },
 ];
@@ -89,7 +92,7 @@ const PortfolioGallery = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-foreground">Case </span>
-            <span className="text-secondary glow-text-secondary">Studies</span>
+            <span className="text-secondary glow-text-secondary">Files</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto font-mono">
             {'>'} Evidence of successful digital transformations
