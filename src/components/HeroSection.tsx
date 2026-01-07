@@ -64,33 +64,34 @@ const HeroSection = () => {
           {/* Evidence tag */}
           <div className="evidence-tag mb-6 animate-fade-in-up">
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span>Case File: 001</span>
+            <span>San Diego Digital Forensics Agency</span>
           </div>
 
           {/* Main heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
             <GlitchText
-              text="DERICK"
+              text="OCTO DIGITAL"
               className="block text-foreground glow-text"
             />
             <span className="block text-primary glow-text">
-              <TypewriterText text="DOWNS" delay={500} speed={100} />
+              <TypewriterText text="FORENSICS" delay={500} speed={100} />
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 animate-fade-in-up delay-300 font-mono">
-            <span className="text-secondary">{'>'}</span> 20 years of digital experience specializing in{' '}
-            <span className="text-primary">Digital Forensics</span>,{' '}
-            <span className="text-primary">Investigations</span>,{' '}
-            <span className="text-primary">Web Development</span>, and{' '}
-            <span className="text-primary">Growth Hacking</span>.
+            <span className="text-secondary">{'>'}</span> Over 20 years of experience in digital forensics and investigative analysis. Octo Digital Forensics specializes in court-admissible {' '}
+            <span className="text-primary">mobile device</span>,{' '}
+            <span className="text-primary">computer extractions</span>,{' '}
+            <span className="text-primary">digital evidence recovery</span>,{' '}
+            <span className="text-primary">cyber intrusion analysis</span>, and{' '}
+            <span className="text-primary">complex digital investigations</span>.
           </p>
 
           {/* Quote */}
           <blockquote className="border-l-2 border-secondary pl-4 mb-10 animate-fade-in-up delay-400">
             <p className="text-xl md:text-2xl font-mono text-secondary glow-text-secondary italic">
-              "Think Smarter, Not Harder"
+              "Where Digital Evidence Is Examined, Preserved, and Proven"
             </p>
           </blockquote>
 

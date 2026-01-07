@@ -1,21 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
-import sonyLogo from '@/assets/logos/sony.svg';
-import gmcLogo from '@/assets/logos/gmc.svg';
-import michelinLogo from '@/assets/logos/michelin.svg';
-
+// import sonyLogo from '@/assets/logos/sony.svg';
+// import gmcLogo from '@/assets/logos/gmc.svg';
+// import michelinLogo from '@/assets/logos/michelin.svg';
+import bgImage from "@/assets/contact-bg.png";
 const clients = [
-  { name: 'Sony', logo: sonyLogo },
-  { name: 'GMC', logo: gmcLogo },
-  { name: 'Costco', logo: null },
-  { name: 'Miva', logo: null },
-  { name: 'NoteVault', logo: null },
-  { name: 'eSUB', logo: null },
-  { name: 'Refi', logo: null },
-  { name: 'SCISO', logo: null },
-  { name: 'InDev', logo: null },
-  { name: 'Refinance', logo: null },
-  { name: 'Michelin', logo: michelinLogo },
-  { name: 'Speed Society', logo: null },
+  { name: 'Cellebrite', logo: null },
+  { name: 'Magnet Forensics', logo: null },
+  { name: 'Oxygen Forensics', logo: null },
+  { name: 'MSAB (XRY)', logo: null },
+  { name: 'AccessData (FTK)', logo: null },
+  { name: 'OpenText EnCase', logo: null },
+  { name: 'Paraben Forensics', logo: null },
+  { name: 'Elcomsoft', logo: null },
+  { name: 'BlackBag Technologies', logo: null },
+  { name: 'Grayshift', logo: null },
+  { name: 'Belkasoft', logo: null },
+  { name: 'Exterro', logo: null },
 ];
 
 const ClientsSection = () => {
@@ -46,6 +46,12 @@ const ClientsSection = () => {
     <section 
       id="clients" 
       ref={sectionRef}
+       style={{
+    backgroundImage: `url(${bgImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
       className="py-24 relative overflow-hidden"
     >
       {/* Background */}
@@ -55,14 +61,16 @@ const ClientsSection = () => {
         {/* Section header */}
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <div className="evidence-tag mx-auto mb-4">
-            <span>Section 03</span>
+            <span>Some Tools We Use – Digital Forensics Tools</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-foreground">Evidence </span>
-            <span className="text-secondary glow-text-secondary">Board</span>
+            <span className="text-foreground">Digital Forensics 
+ </span>
+            <span className="text-secondary glow-text-secondary"> Tools</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto font-mono">
-            {'>'} Verified collaborations with industry leaders
+            {'>'} Validated forensic tools and platforms used in digital investigations
+
           </p>
         </div>
 
@@ -88,7 +96,7 @@ const ClientsSection = () => {
                       className="h-12 w-auto object-contain filter brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                     />
                   ) : (
-                    <div className="font-mono text-lg text-muted-foreground group-hover:text-primary transition-colors duration-300 text-center">
+                    <div className="font-mono text-lg text-foreground group-hover:text-primary transition-colors duration-300 text-center">
                       {client.name}
                     </div>
                   )}
@@ -122,7 +130,7 @@ const ClientsSection = () => {
                       className="h-12 w-auto object-contain filter brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                     />
                   ) : (
-                    <div className="font-mono text-lg text-muted-foreground group-hover:text-secondary transition-colors duration-300 text-center">
+                    <div className="font-mono text-lg text-foreground group-hover:text-secondary transition-colors duration-300 text-center">
                       {client.name}
                     </div>
                   )}

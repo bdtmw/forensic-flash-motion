@@ -32,7 +32,7 @@ const Footer = () => {
               Services
             </a>
             <a href="#clients" className="text-muted-foreground hover:text-primary transition-colors">
-              Clients
+              Tools
             </a>
             <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
               Contact

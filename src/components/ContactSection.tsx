@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { Phone, Calendar, Mail, MapPin, ExternalLink } from 'lucide-react';
 
+
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -37,15 +38,16 @@ const ContactSection = () => {
           {/* Section header */}
           <div className={`text-center mb-12 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <div className="evidence-tag mx-auto mb-4">
-              <span>Section 04</span>
+              <span>Book a Discovery Call Today</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold mb-4">
-              <span className="text-foreground">I Build </span>
-              <span className="text-primary glow-text">Dope Stuff</span>
-              <span className="text-foreground"> Online</span>
+              <span className="text-foreground">We Help Identify, </span>
+              <span className="text-primary glow-text">Preserve</span>
+              <span className="text-foreground">, and Analyze Digital Evidence</span>
             </h2>
             <p className="text-xl text-secondary font-mono glow-text-secondary">
-              Growth Hacker | Digital Forensics Expert
+              Digital Forensics Examiners | Expert Witness Support
+
             </p>
           </div>
 
@@ -60,10 +62,10 @@ const ContactSection = () => {
                 <div>
                   <h3 className="font-mono text-lg text-foreground mb-1">Direct Line</h3>
                   <a 
-                    href="tel:18004843946" 
+                    href="tel:858-692-3306" 
                     className="text-primary font-mono text-xl hover:glow-text transition-all duration-300"
                   >
-                    1-800-484-3946
+                    858-692-3306
                   </a>
                   <p className="text-muted-foreground text-sm mt-2">
                     Available for immediate consultation
@@ -81,12 +83,12 @@ const ContactSection = () => {
                 <div>
                   <h3 className="font-mono text-lg text-foreground mb-1">Book Appointment</h3>
                   <a 
-                    href="https://calendly.com/derickdowns" 
+                    href="https://calendly.com/digitalforensics" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-secondary font-mono hover:glow-text-secondary transition-all duration-300 flex items-center gap-2"
                   >
-                    calendly.com/derickdowns
+                    calendly.com/digitalforensics
                     <ExternalLink className="w-4 h-4" />
                   </a>
                   <p className="text-muted-foreground text-sm mt-2">
@@ -105,7 +107,7 @@ const ContactSection = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button variant="hero" size="xl" className="group">
                 <Phone className="w-5 h-5 group-hover:animate-pulse" />
-                Call Derick Now
+                Call Now
               </Button>
               <Button variant="outline" size="xl">
                 <Mail className="w-5 h-5" />

@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ExternalLink, Eye } from 'lucide-react';
-import portfolioEcommerce from '@/assets/portfolio-ecommerce.jpg';
-import portfolioForensics from '@/assets/portfolio-forensics.jpg';
-import portfolioCorporate from '@/assets/portfolio-corporate.jpg';
-import portfolioBrand from '@/assets/portfolio-brand.jpg';
-import portfolioSecurity from '@/assets/portfolio-security.jpg';
-import portfolioMobile from '@/assets/portfolio-mobile.jpg';
+import portfolioEcommerce from '@/assets/service-ecommerce.jpg';
+import portfolioForensics from '@/assets/service-forensics.jpg';
+import portfolioCorporate from '@/assets/service-web.jpg';
+import portfolioBrand from '@/assets/service-ecommerce.jpg';
+import portfolioSecurity from '@/assets/service-forensics.jpg';
+import portfolioMobile from '@/assets/service-web.jpg';
 
 const portfolioItems = [
   {
@@ -52,7 +52,7 @@ const PortfolioGallery = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const filters = ['All', 'Web Development', 'Digital Forensics', 'Design'];
+  const filters = ['All', 'Investigations', 'Digital Forensics', 'Expert Testimony','E-Discovery'];
 
   const filteredItems = activeFilter === 'All' 
     ? portfolioItems 
@@ -95,7 +95,8 @@ const PortfolioGallery = () => {
             <span className="text-secondary glow-text-secondary">Files</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto font-mono">
-            {'>'} Evidence of successful digital transformations
+            {'>'} Documented forensic case studies demonstrating real-world digital investigations, evidence analysis, and court-supported outcomes.
+
           </p>
         </div>
 

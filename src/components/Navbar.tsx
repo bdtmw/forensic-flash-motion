@@ -18,7 +18,7 @@ const Navbar = () => {
   const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
-    { label: 'Clients', href: '#clients' },
+    { label: 'Tools', href: '#clients' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -35,10 +35,10 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
             <div className="w-8 h-8 border border-primary glow-border flex items-center justify-center">
-              <span className="text-primary font-mono font-bold text-lg">D</span>
+              <span className="text-primary font-mono font-bold text-lg">O</span>
             </div>
             <span className="font-mono text-xl tracking-wider glow-text hidden sm:block">
-              DERICK<span className="text-secondary">.</span>DOWNS
+              Octo Digital Forensics
             </span>
           </a>
 

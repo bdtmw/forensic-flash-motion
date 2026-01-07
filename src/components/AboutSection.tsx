@@ -31,14 +31,14 @@ const AboutSection = () => {
   ];
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       ref={sectionRef}
       className="py-24 relative overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 forensic-grid opacity-30" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image / Visual side */}
@@ -49,23 +49,23 @@ const AboutSection = () => {
               <div className="absolute -top-8 -right-8 text-primary/20">
                 <Fingerprint size={120} strokeWidth={1} />
               </div>
-              
+
               {/* Glowing frame effect */}
               <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-primary opacity-30 blur-xl" />
-              
+
               {/* Main image container */}
               <div className="case-file p-2 relative">
                 <div className="relative overflow-hidden">
                   {/* Actual profile image */}
-                  <img 
-                    src={profileHero} 
-                    alt="Derick Downs - Digital Forensics Expert" 
+                  <img
+                    src={profileHero}
+                    alt="Derick Downs - Digital Forensics Expert"
                     className="w-full aspect-square object-cover"
                   />
-                  
+
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                  
+
                   {/* Scan line effect */}
                   <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-0.5 bg-primary/50 animate-scan-vertical" />
@@ -83,7 +83,7 @@ const AboutSection = () => {
                       Subject Profile
                     </div>
                     <div className="font-mono text-2xl text-foreground glow-text">
-                      DERICK DOWNS
+                      Octo Digital Forensics
                     </div>
                   </div>
                 </div>
@@ -100,9 +100,8 @@ const AboutSection = () => {
                 {skills.map((skill, i) => (
                   <div
                     key={skill.label}
-                    className={`flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-3 py-2 ${
-                      isVisible ? 'animate-fade-in-up' : 'opacity-0'
-                    }`}
+                    className={`flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-3 py-2 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'
+                      }`}
                     style={{ animationDelay: `${(i + 2) * 200}ms` }}
                   >
                     <skill.icon className="w-4 h-4 text-primary" />
@@ -116,39 +115,50 @@ const AboutSection = () => {
           {/* Content side */}
           <div className={`${isVisible ? 'animate-fade-in-up delay-200' : 'opacity-0'}`}>
             <div className="evidence-tag mb-4">
-              <span>Section 01</span>
+              <span>Complicated cases require compelling digital evidence</span>
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-foreground">Contract</span>
-              <span className="text-primary block glow-text">Developer</span>
+              <span className="text-foreground">Digital Forensics</span>
+              <span className="text-primary block glow-text">Expert</span>
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              I can deliver your digital asset quickly, faster than any other digital agency. 
-              With over <span className="text-primary font-semibold">20 years of experience</span>, 
-              I leverage the latest A.I. tools to streamline the process and bring innovative solutions to clients.
+           <span className="text-primary font-semibold">Derick Downs</span>,
+            founder of Octo Digital Forensics, works as a digital forensics examiner and is a
+            Certified Computer Operator and Certified Physical Analyst (CCPA). He collaborates 
+            with law enforcement, private investigators, and attorneys across a wide range of 
+            cases, and has supported matters involving local and federal agencies, including the 
+            FBI, ATF, Homeland Security, and public defenders. He also serves as an Expert Witness 
+            when required.
+              
             </p>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              I promise to <span className="text-secondary font-semibold">beat any agency's prices</span>, 
-              turnaround times, and ROI for my clients. Hire me for efficient, expert service.
+             <span className="text-secondary font-semibold"> Derick </span>
+               did not follow a traditional law enforcement path into digital forensics. 
+              Prior to entering the field, he built his career as a website developer and digital 
+              marketing expert. Over the years, he has managed millions of dollars in digital 
+              advertising for organizations ranging from startups to publicly traded companies. 
+              That background gives him a practical, real-world understanding of digital systems 
+              that directly informs his forensic work.
+
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 mb-10">
               {[
-                { value: '20+', label: 'Years' },
-                { value: '100+', label: 'Clients' },
-                { value: '∞', label: 'Dedication' },
+                { value: '7+', label: 'Years' },
+                { value: '500+', label: 'Cases' },
+                { value: '10+', label: 'Certifications' },
               ].map((stat, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className="text-center p-4 bg-card/50 border border-border relative overflow-hidden group hover:border-primary/50 transition-colors duration-300"
                 >
                   {/* Hover glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+
                   <div className="text-3xl md:text-4xl font-mono font-bold text-primary glow-text relative z-10">
                     {stat.value}
                   </div>
@@ -160,7 +170,7 @@ const AboutSection = () => {
             </div>
 
             <Button variant="forensic" size="lg" className="group">
-              View Past Work
+              Book A Discovery Call
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>

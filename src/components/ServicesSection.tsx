@@ -10,74 +10,72 @@ import {
   TrendingUp,
   Shield
 } from 'lucide-react';
-import serviceWeb from '@/assets/service-web.jpg';
-import serviceForensics from '@/assets/service-forensics.jpg';
-import serviceEcommerce from '@/assets/service-ecommerce.jpg';
-
+import serviceCloud from '@/assets/service_cloud.jpg';
+import serviceData from '@/assets/service_data.jpg';
+import serviceAnalysis from '@/assets/service_analysis.jpg';
+import serviceMobile from '@/assets/service_mobile.jpg';
+import serviceComp from '@/assets/service_comp.jpg';
+import servicePriv from '@/assets/service_private.jpg';
+import serviceWitness from '@/assets/service_witness.jpg';
+import serviceEvidence from '@/assets/service_evidence.jpg';
 const services = [
   {
     icon: Globe,
-    title: 'Websites & Apps',
-    description: 'Custom web development with cutting-edge technologies',
-    image: serviceWeb,
+    title: 'Mobile Device Forensics',
+    description: 'Court-admissible extraction and analysis of cell phones, tablets, and mobile data',
+    image: serviceMobile,
     featured: true,
   },
   {
     icon: ShoppingCart,
-    title: 'E-Commerce',
-    description: 'Complete online store solutions that convert',
-    image: serviceEcommerce,
+    title: 'Computer & Server Forensics',
+    description: 'Forensic examination of computers, servers, and storage media',
+    image: serviceComp,
     featured: true,
   },
   {
     icon: Palette,
-    title: 'Graphic Design',
-    description: 'Visual identity that captures your brand essence',
-    image: null,
-    featured: false,
+    title: 'Cloud & Account Forensics',
+    description: 'Forensic collection and analysis of cloud, email, and online account data',
+    image: serviceCloud,
+    featured: true,
   },
   {
     icon: MessageSquare,
-    title: 'Consulting',
-    description: 'Strategic digital business advisory services',
-    image: null,
-    featured: false,
+    title: 'Data Recovery & Extractions',
+    description: 'Recovery of deleted, damaged, or inaccessible digital evidence',
+    image: serviceData,
+    featured: true,
   },
   {
     icon: Cloud,
-    title: 'Cloud Hosting',
-    description: 'Managed, scalable infrastructure solutions',
-    image: null,
-    featured: false,
+    title: 'Incident Response & Breach Analysis',
+    description: 'Forensic investigation of cyber intrusions and security incidents',
+    image: serviceAnalysis,
+    featured: true,
   },
   {
     icon: Share2,
-    title: 'Social Media',
-    description: 'SMM strategies that build engaged communities',
-    image: null,
-    featured: false,
+    title: 'Private & Digital Investigations',
+    description: 'Confidential investigations combining digital evidence and field intelligence',
+    image: servicePriv,
+    featured: true,
   },
   {
     icon: Search,
-    title: 'SEM',
-    description: 'Paid advertising that maximizes ROI',
-    image: null,
-    featured: false,
+    title: 'Expert Witness & Litigation Support',
+    description: 'Court-ready reporting, declarations, and expert testimony',
+    image: serviceWitness,
+    featured: true,
   },
   {
     icon: TrendingUp,
-    title: 'SEO',
-    description: 'Organic growth through search optimization',
-    image: null,
-    featured: false,
-  },
-  {
-    icon: Shield,
-    title: 'Digital Forensics',
-    description: 'Investigation and data recovery services',
-    image: serviceForensics,
+    title: 'Evidence Preservation & Chain of Custody',
+    description: 'Defensible handling and documentation of digital evidence',
+    image: serviceEvidence,
     featured: true,
   },
+
 ];
 
 const ServicesSection = () => {
@@ -115,14 +113,15 @@ const ServicesSection = () => {
         {/* Section header */}
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <div className="evidence-tag mx-auto mb-4">
-            <span>Section 02</span>
+            <span>Services</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-foreground">Case </span>
             <span className="text-primary glow-text">Files</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto font-mono">
-            {'>'} Services offered by Derick Downs
+            {'>'} Services offered by Octo Digital Forensics
+
           </p>
         </div>
 
