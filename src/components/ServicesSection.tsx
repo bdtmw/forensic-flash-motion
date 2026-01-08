@@ -10,14 +10,14 @@ import {
   TrendingUp,
   Shield
 } from 'lucide-react';
-import serviceCloud from '@/assets/service_cloud.jpg';
-import serviceData from '@/assets/service_data.jpg';
-import serviceAnalysis from '@/assets/service_analysis.jpg';
-import serviceMobile from '@/assets/service_mobile.jpg';
-import serviceComp from '@/assets/service_comp.jpg';
-import servicePriv from '@/assets/service_private.jpg';
-import serviceWitness from '@/assets/service_witness.jpg';
-import serviceEvidence from '@/assets/service_evidence.jpg';
+import serviceCloud from '@/assets/service_cloud.webp';
+import serviceData from '@/assets/service_data.webp';
+import serviceAnalysis from '@/assets/service_analysis.webp';
+import serviceMobile from '@/assets/service_mobile.webp';
+import serviceComp from '@/assets/service_comp.webp';
+import servicePriv from '@/assets/service_private.webp';
+import serviceWitness from '@/assets/service_witness.webp';
+import serviceEvidence from '@/assets/service_evidence.webp';
 const services = [
   {
     icon: Globe,
