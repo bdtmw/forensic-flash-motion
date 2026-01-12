@@ -129,14 +129,15 @@ const ServicesSection = () => {
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           {services.filter(s => s.featured).map((service, index) => (
             <div
-              key={service.title}
+             
+            >
+               {/* key={service.title}
               className={`group relative overflow-hidden cursor-pointer ${
                 isVisible ? 'animate-fade-in-up' : 'opacity-0'
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
               onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
+              onMouseLeave={() => setHoveredIndex(null)} */}
               {/* Image background */}
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img

@@ -23,6 +23,7 @@ const Navbar = () => {
   ];
 
   return (
+    <div className='h-[60px]'>
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
@@ -89,6 +90,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
+    </div>
   );
 };
 

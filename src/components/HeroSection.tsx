@@ -80,12 +80,18 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 animate-fade-in-up delay-300 font-mono">
-            <span className="text-secondary">{'>'}</span> Over 20 years of experience in digital forensics and investigative analysis. Octo Digital Forensics specializes in court-admissible {' '}
+            <span className="text-secondary">{'- '}</span> 
+            Octo Digital Forensics is a digital forensics and incident response firm specializing 
+            in high-integrity, confidential investigations. Our examiners apply court-defensible 
+            methodologies, validated forensic tools, and industry-standard procedures to produce 
+            accurate, repeatable, and legally sound findings. Book a FREE Call to discuss your 
+            situation. 
+ {/* {' '}
             <span className="text-primary">mobile device</span>,{' '}
             <span className="text-primary">computer extractions</span>,{' '}
             <span className="text-primary">digital evidence recovery</span>,{' '}
             <span className="text-primary">cyber intrusion analysis</span>, and{' '}
-            <span className="text-primary">complex digital investigations</span>.
+            <span className="text-primary">complex digital investigations</span>. */}
           </p>
 
           {/* Quote */}

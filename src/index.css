@@ -132,7 +132,7 @@
       hsl(var(--glow-primary) / 0.5),
       transparent
     );
-    animation: scanMove 4s linear infinite;
+    animation: scanMove 10s linear infinite;
     pointer-events: none;
     z-index: 101;
   }

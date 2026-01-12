@@ -15,10 +15,10 @@ const Footer = () => {
             </div>
             <div>
               <span className="font-mono text-lg tracking-wider">
-                DERICK<span className="text-primary">.</span>DOWNS
+                Octo Digital <span className="text-primary"></span>Forensics
               </span>
               <p className="text-xs text-muted-foreground font-mono">
-                Digital Forensics & Growth Hacking
+                Digital Forensics & Private Investigation Agency
               </p>
             </div>
           </div>
@@ -41,14 +41,14 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="text-muted-foreground text-sm font-mono">
-            <span className="text-primary">©</span> {new Date().getFullYear()} Derick Downs
+            <span className="text-primary">©</span> {new Date().getFullYear()} Octo Digital Forensics 
           </div>
         </div>
 
         {/* Terminal style footer message */}
         <div className="mt-8 pt-6 border-t border-border/50 text-center">
           <p className="font-mono text-xs text-muted-foreground">
-            <span className="text-secondary">$</span> Building dope stuff online since 2004
+            <span className="text-secondary">@</span> We turn complex digital data into clear, defensible evidence.
             <span className="ml-2 inline-block w-2 h-4 bg-primary/50 animate-pulse" />
           </p>
         </div>

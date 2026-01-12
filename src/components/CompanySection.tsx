@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
 import { ArrowRight, Fingerprint, Shield, Code, TrendingUp } from 'lucide-react';
-import profileHero from '@/assets/DerickP.png';
+import profileHero from '@/assets/octap.png';
 
-const AboutSection = () => {
+const CompanySection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -83,7 +83,7 @@ const AboutSection = () => {
                       Subject Profile
                     </div>
                     <div className="font-mono text-2xl text-foreground glow-text">
-                      Derick Downs
+                      Octo Digital Forensics 
                     </div>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const AboutSection = () => {
           {/* Content side */}
           <div className={`${isVisible ? 'animate-fade-in-up delay-200' : 'opacity-0'}`}>
             <div className="evidence-tag mb-4">
-              <span>Complicated cases require compelling digital evidence</span>
+              <span>When cases get complex, the evidence must be precise</span>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -124,33 +124,29 @@ const AboutSection = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-           <span className="text-primary font-semibold">Derick Downs</span>,
-            founder of Octo Digital Forensics, works as a digital forensics examiner and is a
-            Certified Computer Operator and Certified Physical Analyst (CCPA). He collaborates 
-            with law enforcement, private investigators, and attorneys across a wide range of 
-            cases, and has supported matters involving local and federal agencies, including the 
-            FBI, ATF, Homeland Security, and public defenders. He also serves as an Expert Witness 
-            when required.
-              
+           <span className="text-primary font-semibold">Octo Digital Forensics </span>
+           is a San Diego–based digital forensics firm providing professional evidence analysis 
+           for attorneys, private investigators, corporations, and individuals. We handle a wide 
+           range of matters including civil litigation, criminal defense, internal investigations, 
+           and incident response, supporting both local and federal cases with validated, 
+           court-defensible forensic methodologies.
             </p>
-
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-             <span className="text-secondary font-semibold"> Derick </span>
-               did not follow a traditional law enforcement path into digital forensics. 
-              Prior to entering the field, he built his career as a website developer and digital 
-              marketing expert. Over the years, he has managed millions of dollars in digital 
-              advertising for organizations ranging from startups to publicly traded companies. 
-              That background gives him a practical, real-world understanding of digital systems 
-              that directly informs his forensic work.
+             <span className="text-secondary font-semibold"> Our Services </span>
+               include remote and on-site digital extractions, mobile and computer forensics, 
+               data recovery, e-discovery, and forensic consulting. We operate as a neutral third 
+               party and deliver secure, confidential results for both court-related matters and 
+               private investigations, offering clarity, accuracy, and peace of mind.
+
 
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 mb-10">
               {[
-                { value: '7+', label: 'Years' },
-                { value: '500+', label: 'Cases' },
-                { value: '10+', label: 'Certifications' },
+                { value: '25+', label: 'Examiners' },
+                { value: '450+', label: 'Affidavits' },
+                { value: '200+', label: 'Expert Witness' },
               ].map((stat, i) => (
                 <div
                   key={i}
@@ -180,4 +176,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default CompanySection;
