@@ -25,9 +25,9 @@ const AboutSection = () => {
   }, []);
 
   const skills = [
-    { icon: Shield, label: 'Digital Forensics' },
-    { icon: Code, label: 'Web Development' },
-    { icon: TrendingUp, label: 'Growth Hacking' },
+    { icon: Shield, label: 'Spyware' },
+    { icon: Code, label: 'Digital Investigations' },
+    { icon: TrendingUp, label: 'Remote Extractions' },
   ];
 
   return (
