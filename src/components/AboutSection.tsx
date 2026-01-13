@@ -120,7 +120,7 @@ const AboutSection = () => {
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="text-foreground">Digital Forensics</span>
-              <span className="text-primary block glow-text">Expert</span>
+              <span className="text-primary block glow-text">Experts</span>
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
