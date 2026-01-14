@@ -80,13 +80,13 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 animate-fade-in-up delay-300 font-mono">
-            <span className="text-secondary">{'- '}</span> 
-            Octo Digital Forensics is a digital forensics and incident response firm specializing 
-            in high-integrity, confidential investigations. Our examiners apply court-defensible 
-            methodologies, validated forensic tools, and industry-standard procedures to produce 
-            accurate, repeatable, and legally sound findings. Book a FREE Call to discuss your 
-            situation. 
- {/* {' '}
+            <span className="text-secondary">{'- '}</span>
+            Octo Digital Forensics is a digital forensics and incident response firm specializing
+            in high-integrity, confidential investigations. Our examiners apply court-defensible
+            methodologies, validated forensic tools, and industry-standard procedures to produce
+            accurate, repeatable, and legally sound findings. Book a FREE Call to discuss your
+            situation.
+            {/* {' '}
             <span className="text-primary">mobile device</span>,{' '}
             <span className="text-primary">computer extractions</span>,{' '}
             <span className="text-primary">digital evidence recovery</span>,{' '}
@@ -103,35 +103,39 @@ const HeroSection = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-500">
-            <Button variant="hero" size="xl" className="group">
-              <Phone className="w-5 h-5 group-hover:animate-pulse" />
-              Call Now
-            </Button>
+            <a href="https://calendly.com/digitalforensics" target="_blank">
+              <Button variant="hero" size="xl" className="group">
+                <Phone className="w-5 h-5 group-hover:animate-pulse" />
+                Call Now
+              </Button>
+            </a>     
+            <a href="https://calendly.com/digitalforensics" target="_blank">
             <Button variant="forensic" size="xl" className="group">
               <Calendar className="w-5 h-5" />
               Book Discovery Call
             </Button>
-          </div>
+          </a>
         </div>
       </div>
+    </div>
 
-      {/* Scroll indicator */}
-      <a
-        href="#about"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 animate-fade-in-up delay-700"
-      >
-        <span className="font-mono text-xs uppercase tracking-widest">Scroll</span>
-        <ChevronDown className="w-6 h-6 animate-bounce" />
-      </a>
+      {/* Scroll indicator */ }
+  <a
+    href="#about"
+    className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 animate-fade-in-up delay-700"
+  >
+    <span className="font-mono text-xs uppercase tracking-widest">Scroll</span>
+    <ChevronDown className="w-6 h-6 animate-bounce" />
+  </a>
 
-      {/* Decorative corner elements */}
+  {/* Decorative corner elements */ }
       <div className="absolute top-20 right-10 w-32 h-32 border border-primary/20 opacity-50 animate-pulse" />
       <div className="absolute bottom-20 left-10 w-24 h-24 border border-secondary/20 opacity-50 animate-pulse" style={{ animationDelay: '1s' }} />
 
-      {/* Glowing orbs */}
+  {/* Glowing orbs */ }
       <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-secondary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-    </section>
+    </section >
   );
 };
 

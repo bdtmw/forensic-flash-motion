@@ -25,14 +25,14 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section 
-      id="contact" 
+    <section
+      id="contact"
       ref={sectionRef}
       className="py-24 relative overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-background forensic-grid" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
@@ -61,8 +61,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-mono text-lg text-foreground mb-1">Direct Line</h3>
-                  <a 
-                    href="tel:858-692-3306" 
+                  <a
+                    href="tel:858-692-3306"
                     className="text-primary font-mono text-xl hover:glow-text transition-all duration-300"
                   >
                     858-692-3306
@@ -82,8 +82,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-mono text-lg text-foreground mb-1">Book Appointment</h3>
-                  <a 
-                    href="https://calendly.com/digitalforensics" 
+                  <a
+                    href="https://calendly.com/digitalforensics"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-secondary font-mono hover:glow-text-secondary transition-all duration-300 flex items-center gap-2"
@@ -105,14 +105,18 @@ const ContactSection = () => {
               {'>'} Ready to start your project? Let's investigate the possibilities.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button variant="hero" size="xl" className="group">
-                <Phone className="w-5 h-5 group-hover:animate-pulse" />
-                Call Now
-              </Button>
-              <Button variant="outline" size="xl">
-                <Mail className="w-5 h-5" />
-                Send Message
-              </Button>
+              <a href="https://calendly.com/digitalforensics" target="_blank">
+                <Button variant="hero" size="xl" className="group">
+                  <Phone className="w-5 h-5 group-hover:animate-pulse" />
+                  Call Now
+                </Button>
+              </a>
+              <a href="https://calendly.com/digitalforensics" target="_blank">
+                <Button variant="outline" size="xl">
+                  <Mail className="w-5 h-5" />
+                  Send Message
+                </Button>
+              </a>
             </div>
           </div>
         </div>

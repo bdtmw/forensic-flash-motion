@@ -33,11 +33,11 @@ const CompanySection = () => {
     return () => observer.disconnect();
   }, []);
 
-const skills = [
-  { icon: HardDrive, label: 'Deleted Data Recovery' },
-  { icon: AlertTriangle, label: 'Incident Response & Breach Analysis' },
-  { icon: Search, label: 'E-Discovery & Digital Evidence Review' },
-];
+  const skills = [
+    { icon: HardDrive, label: 'Deleted Data Recovery' },
+    { icon: AlertTriangle, label: 'Incident Response & Breach Analysis' },
+    { icon: Search, label: 'E-Discovery & Digital Evidence Review' },
+  ];
 
   return (
     <section
@@ -92,7 +92,7 @@ const skills = [
                       Subject Profile
                     </div>
                     <div className="font-mono text-2xl text-foreground glow-text">
-                      Octo Digital Forensics 
+                      Octo Digital Forensics
                     </div>
                   </div>
                 </div>
@@ -133,19 +133,19 @@ const skills = [
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-           <span className="text-primary font-semibold">Octo Digital Forensics </span>
-           is a San Diego–based digital forensics firm providing professional evidence analysis 
-           for attorneys, private investigators, corporations, and individuals. We handle a wide 
-           range of matters including civil litigation, criminal defense, internal investigations, 
-           and incident response, supporting both local and federal cases with validated, 
-           court-defensible forensic methodologies.
+              <span className="text-primary font-semibold">Octo Digital Forensics </span>
+              is a San Diego–based digital forensics firm providing professional evidence analysis
+              for attorneys, private investigators, corporations, and individuals. We handle a wide
+              range of matters including civil litigation, criminal defense, internal investigations,
+              and incident response, supporting both local and federal cases with validated,
+              court-defensible forensic methodologies.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-             <span className="text-secondary font-semibold"> Our Services </span>
-               include remote and on-site digital extractions, mobile and computer forensics, 
-               data recovery, e-discovery, and forensic consulting. We operate as a neutral third 
-               party and deliver secure, confidential results for both court-related matters and 
-               private investigations, offering clarity, accuracy, and peace of mind.
+              <span className="text-secondary font-semibold"> Our Services </span>
+              include remote and on-site digital extractions, mobile and computer forensics,
+              data recovery, e-discovery, and forensic consulting. We operate as a neutral third
+              party and deliver secure, confidential results for both court-related matters and
+              private investigations, offering clarity, accuracy, and peace of mind.
 
 
             </p>
@@ -173,11 +173,12 @@ const skills = [
                 </div>
               ))}
             </div>
-
-            <Button variant="forensic" size="lg" className="group">
-              Book A Discovery Call
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <a href="https://calendly.com/digitalforensics" target="_blank">
+              <Button variant="forensic" size="lg" className="group">
+                Book A Discovery Call
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>

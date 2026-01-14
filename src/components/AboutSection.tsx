@@ -124,23 +124,23 @@ const AboutSection = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-           <span className="text-primary font-semibold">Derick Downs</span>,
-            founder of Octo Digital Forensics, works as a digital forensics examiner and is a
-            Certified Computer Operator and Certified Physical Analyst (CCPA). He collaborates 
-            with law enforcement, private investigators, and attorneys across a wide range of 
-            cases, and has supported matters involving local and federal agencies, including the 
-            FBI, ATF, Homeland Security, and public defenders. He also serves as an Expert Witness 
-            when required.
-              
+              <span className="text-primary font-semibold">Derick Downs</span>,
+              founder of Octo Digital Forensics, works as a digital forensics examiner and is a
+              Certified Computer Operator and Certified Physical Analyst (CCPA). He collaborates
+              with law enforcement, private investigators, and attorneys across a wide range of
+              cases, and has supported matters involving local and federal agencies, including the
+              FBI, ATF, Homeland Security, and public defenders. He also serves as an Expert Witness
+              when required.
+
             </p>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-             <span className="text-secondary font-semibold"> Derick </span>
-               did not follow a traditional law enforcement path into digital forensics. 
-              Prior to entering the field, he built his career as a website developer and digital 
-              marketing expert. Over the years, he has managed millions of dollars in digital 
-              advertising for organizations ranging from startups to publicly traded companies. 
-              That background gives him a practical, real-world understanding of digital systems 
+              <span className="text-secondary font-semibold"> Derick </span>
+              did not follow a traditional law enforcement path into digital forensics.
+              Prior to entering the field, he built his career as a website developer and digital
+              marketing expert. Over the years, he has managed millions of dollars in digital
+              advertising for organizations ranging from startups to publicly traded companies.
+              That background gives him a practical, real-world understanding of digital systems
               that directly informs his forensic work.
 
             </p>
@@ -168,11 +168,12 @@ const AboutSection = () => {
                 </div>
               ))}
             </div>
-
-            <Button variant="forensic" size="lg" className="group">
-              Book A Discovery Call
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <a href="https://calendly.com/digitalforensics" target="_blank">
+              <Button variant="forensic" size="lg" className="group">
+                Book A Discovery Call
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ const SpywareScan = () => {
           const newProgress = prev + Math.random() * 3;
           const checkIndex = Math.floor((newProgress / 100) * scanChecks.length);
           setCurrentCheck(scanChecks[Math.min(checkIndex, scanChecks.length - 1)]);
-          
+
           if (newProgress >= 100) {
             clearInterval(interval);
             setScanState('complete');
@@ -88,7 +88,7 @@ const SpywareScan = () => {
               <span className="text-primary">Spyware Scan</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Detect hidden surveillance software, spyware, and unauthorized monitoring 
+              Detect hidden surveillance software, spyware, and unauthorized monitoring
               applications on your mobile device.
             </p>
           </div>
@@ -116,9 +116,9 @@ const SpywareScan = () => {
                       This scan may take up to 5 minutes to complete
                     </p>
                   </div>
-                  <Button 
-                    variant="hero" 
-                    size="xl" 
+                  <Button
+                    variant="hero"
+                    size="xl"
                     onClick={startScan}
                     className="w-full max-w-xs"
                   >
@@ -133,7 +133,7 @@ const SpywareScan = () => {
                   <div className="relative w-32 h-32 mx-auto">
                     {/* Spinning ring */}
                     <div className="absolute inset-0 rounded-full border-4 border-primary/20" />
-                    <div 
+                    <div
                       className="absolute inset-0 rounded-full border-4 border-transparent border-t-primary animate-spin"
                       style={{ animationDuration: '1.5s' }}
                     />
@@ -152,7 +152,7 @@ const SpywareScan = () => {
                   </div>
                   {/* Progress bar */}
                   <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
                       style={{ width: `${progress}%` }}
                     />
@@ -192,13 +192,13 @@ const SpywareScan = () => {
 
                   {/* CTAs */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                    <a href="tel:+1234567890">
+                    <a href="https://calendly.com/digitalforensics" target="_blank">
                       <Button variant="hero" className="w-full">
                         <Phone className="w-4 h-4 mr-2" />
                         Call / Text Now
                       </Button>
                     </a>
-                    <a href="#contact">
+                    <a href="https://calendly.com/digitalforensics" target="_blank">
                       <Button variant="forensic" className="w-full">
                         <Calendar className="w-4 h-4 mr-2" />
                         Book Forensic Appointment
