@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-6 font-mono text-sm">
+          <div className="flex items-center gap-6 font-mono text-sm flex-wrap justify-center">
             <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
               About
             </a>
@@ -33,6 +33,9 @@ const Footer = () => {
             </a>
             <a href="#clients" className="text-muted-foreground hover:text-primary transition-colors">
               Tools
+            </a>
+            <a href="/spyware-scan" className="text-muted-foreground hover:text-primary transition-colors">
+              Spyware Scan
             </a>
             <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
               Contact

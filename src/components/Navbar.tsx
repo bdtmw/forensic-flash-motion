@@ -20,6 +20,7 @@ const Navbar = () => {
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
     { label: 'Tools', href: '#clients' },
+    { label: 'Spyware Scan', href: '/spyware-scan' },
     { label: 'Contact', href: '#contact' },
   ];
 
