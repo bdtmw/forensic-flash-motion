@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
+import logo from '@/assets/logo2.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,7 +24,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className='h-[60px]'>
+    <div className='h-[100px]'>
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
@@ -35,12 +36,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="w-8 h-8 border border-primary glow-border flex items-center justify-center">
+            {/* <div className="w-8 h-8 border border-primary glow-border flex items-center justify-center">
               <span className="text-primary font-mono font-bold text-lg">O</span>
             </div>
             <span className="font-mono text-xl tracking-wider glow-text hidden sm:block">
               Octo Digital Forensics
-            </span>
+            </span> */}
+            <img src={logo} alt="" className='w-[115px]'/>
           </a>
 
           {/* Desktop Navigation */}

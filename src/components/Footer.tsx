@@ -48,7 +48,7 @@ const Footer = () => {
         {/* Terminal style footer message */}
         <div className="mt-8 pt-6 border-t border-border/50 text-center">
           <p className="font-mono text-xs text-muted-foreground">
-            <span className="text-secondary">@</span> We turn complex digital data into clear, defensible evidence.
+           <a href="https://derickdowns.com"> <span className="text-secondary">@</span> We turn complex digital data into clear, defensible evidence.</a>
             <span className="ml-2 inline-block w-2 h-4 bg-primary/50 animate-pulse" />
           </p>
         </div>

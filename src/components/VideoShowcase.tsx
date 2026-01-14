@@ -212,7 +212,7 @@ const VideoShowcase = () => {
             {[
               { label: 'Projects', value: '150+' },
               { label: 'Happy Clients', value: '100+' },
-              { label: 'Years Experience', value: '20+' },
+              { label: 'Forensics Tools', value: '50+' },
             ].map((stat, i) => (
               <div
                 key={stat.label}

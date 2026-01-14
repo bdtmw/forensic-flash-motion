@@ -18,6 +18,7 @@ import serviceComp from '@/assets/service_comp.webp';
 import servicePriv from '@/assets/service_private.webp';
 import serviceWitness from '@/assets/service_witness.webp';
 import serviceEvidence from '@/assets/service_evidence.webp';
+import serviceSpy from '@/assets/service_spy.webp';
 const services = [
   {
     icon: Globe,
@@ -68,6 +69,13 @@ const services = [
     image: serviceWitness,
     featured: true,
   },
+      {
+    icon: Shield,
+    title: 'Spyware Services ',
+    description: 'Detect, Install, or Remove Spyware',
+    image: serviceSpy,
+    featured: true,
+  },
   {
     icon: TrendingUp,
     title: 'Evidence Preservation & Chain of Custody',
@@ -75,6 +83,7 @@ const services = [
     image: serviceEvidence,
     featured: true,
   },
+
 
 ];
 
@@ -116,8 +125,8 @@ const ServicesSection = () => {
             <span>Services</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-foreground">Case </span>
-            <span className="text-primary glow-text">Files</span>
+            <span className="text-foreground">Digital Forensics </span>
+            <span className="text-primary glow-text">Services</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto font-mono">
             {'>'} Services offered by Octo Digital Forensics

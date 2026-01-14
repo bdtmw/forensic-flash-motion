@@ -1,6 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from './ui/button';
-import { ArrowRight, Fingerprint, Shield, Code, TrendingUp } from 'lucide-react';
+import {
+  ArrowRight,
+  Fingerprint,
+  Shield,
+  Code,
+  TrendingUp,
+  HardDrive,
+  AlertTriangle,
+  Search
+} from 'lucide-react';
 import profileHero from '@/assets/octap.png';
 
 const CompanySection = () => {
@@ -24,11 +33,11 @@ const CompanySection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const skills = [
-    { icon: Shield, label: 'Spyware' },
-    { icon: Code, label: 'Digital Investigations' },
-    { icon: TrendingUp, label: 'Remote Extractions' },
-  ];
+const skills = [
+  { icon: HardDrive, label: 'Deleted Data Recovery' },
+  { icon: AlertTriangle, label: 'Incident Response & Breach Analysis' },
+  { icon: Search, label: 'E-Discovery & Digital Evidence Review' },
+];
 
   return (
     <section
