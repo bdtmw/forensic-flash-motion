@@ -10,6 +10,7 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ScanlineOverlay from '@/components/ScanlineOverlay';
 import ParticleField from '@/components/ParticleField';
+import SpywareCheckSection from '@/components/SpywareCheckSection';
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
       {/* Main content */}
       <main>
         <HeroSection />
+        <SpywareCheckSection />
         <CompanySection/>
         <ServicesSection />
         <VideoShowcase />
