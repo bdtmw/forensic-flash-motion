@@ -98,7 +98,6 @@ const ContactSection = () => {
               </div>
             </div>
           </div>
-
           {/* CTA */}
           <div className={`text-center ${isVisible ? 'animate-fade-in-up delay-400' : 'opacity-0'}`}>
             <p className="text-muted-foreground mb-8 font-mono">
