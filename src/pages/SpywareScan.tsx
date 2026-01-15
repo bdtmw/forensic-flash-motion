@@ -1,15 +1,33 @@
 import { useState, useEffect } from 'react';
-import { Shield, AlertTriangle, Phone, Calendar, Smartphone, Wifi, Lock, Search, CheckCircle2 } from 'lucide-react';
+import { Shield, AlertTriangle, Phone, Calendar, Smartphone, Wifi, Lock, Search, CheckCircle2, Usb, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ScanlineOverlay from '@/components/ScanlineOverlay';
 import ParticleField from '@/components/ParticleField';
 import GlitchText from '@/components/GlitchText';
 import { Link } from 'react-router-dom';
+import logoImage from '@/assets/logo.png';
 
+// WebUSB API types
+interface USBDevice {
+  productName?: string;
+  manufacturerName?: string;
+}
+
+interface USB {
+  requestDevice(options: { filters: object[] }): Promise<USBDevice>;
+}
+
+declare global {
+  interface Navigator {
+    usb?: USB;
+  }
+}
 const SpywareScan = () => {
+  const [connectionState, setConnectionState] = useState<'disconnected' | 'connecting' | 'connected'>('disconnected');
   const [scanState, setScanState] = useState<'idle' | 'scanning' | 'complete'>('idle');
   const [progress, setProgress] = useState(0);
   const [currentCheck, setCurrentCheck] = useState('');
+  const [connectedDevice, setConnectedDevice] = useState<string | null>(null);
 
   const scanChecks = [
     'Analyzing system processes...',
@@ -23,6 +41,32 @@ const SpywareScan = () => {
     'Analyzing background services...',
     'Final security assessment...',
   ];
+
+  // Request USB device connection using WebUSB API
+  const connectDevice = async () => {
+    try {
+      // Check if WebUSB is supported
+      if (!navigator.usb) {
+        alert('WebUSB is not supported in this browser. Please use Chrome or Edge.');
+        return;
+      }
+
+      setConnectionState('connecting');
+
+      // Request USB device - this will show the browser's device picker
+      const device = await navigator.usb.requestDevice({
+        filters: [] // Empty filters to show all devices
+      });
+
+      // Device selected successfully
+      setConnectedDevice(device.productName || device.manufacturerName || 'Unknown Device');
+      setConnectionState('connected');
+    } catch (error) {
+      // User cancelled or no device selected
+      console.log('Device connection cancelled or failed:', error);
+      setConnectionState('disconnected');
+    }
+  };
 
   useEffect(() => {
     if (scanState === 'scanning') {
@@ -45,6 +89,7 @@ const SpywareScan = () => {
   }, [scanState]);
 
   const startScan = () => {
+    if (connectionState !== 'connected') return;
     setScanState('scanning');
     setProgress(0);
   };
@@ -53,6 +98,8 @@ const SpywareScan = () => {
     setScanState('idle');
     setProgress(0);
     setCurrentCheck('');
+    setConnectionState('disconnected');
+    setConnectedDevice(null);
   };
 
   return (
@@ -64,8 +111,7 @@ const SpywareScan = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <Shield className="w-8 h-8 text-primary" />
-            <span className="font-mono text-lg font-bold text-primary">OCTO FORENSICS</span>
+            <img src={logoImage} alt="Octo Digital Forensics" className="h-10 w-auto" />
           </Link>
           <Link to="/">
             <Button variant="ghost" size="sm">← Back to Home</Button>
@@ -78,18 +124,13 @@ const SpywareScan = () => {
         <div className="container mx-auto px-4">
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6">
-              <Shield className="w-4 h-4 text-primary animate-pulse" />
-              <span className="font-mono text-sm text-primary">SECURE ANALYSIS PORTAL</span>
-            </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               <GlitchText text="FREE Cell Phone" />
               <br />
               <span className="text-primary">Spyware Scan</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Detect hidden surveillance software, spyware, and unauthorized monitoring
-              applications on your mobile device.
+              by Octo Digital Forensics
             </p>
           </div>
 
@@ -103,28 +144,80 @@ const SpywareScan = () => {
 
               {scanState === 'idle' && (
                 <div className="text-center space-y-6">
-                  <div className="w-24 h-24 mx-auto rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center">
-                    <Smartphone className="w-12 h-12 text-primary" />
+                  {/* Warning notice */}
+                  <div className="flex items-center justify-center gap-2 text-amber-500">
+                    <AlertTriangle className="w-5 h-5" />
+                    <span className="font-mono text-sm">This scan may take up to 5 minutes to complete</span>
                   </div>
-                  <div className="space-y-2">
-                    <h2 className="text-xl font-mono font-bold">Ready to Scan</h2>
-                    <p className="text-muted-foreground text-sm">
-                      Connect your cell phone via USB to begin analysis
-                    </p>
-                    <p className="text-xs text-amber-500/80 flex items-center justify-center gap-1">
-                      <AlertTriangle className="w-3 h-3" />
-                      This scan may take up to 5 minutes to complete
-                    </p>
+
+                  {/* Device connection status */}
+                  <div className="space-y-4">
+                    <div className={`w-24 h-24 mx-auto rounded-full border-2 flex items-center justify-center transition-all duration-500 ${
+                      connectionState === 'connected' 
+                        ? 'bg-green-500/10 border-green-500/50' 
+                        : connectionState === 'connecting'
+                        ? 'bg-amber-500/10 border-amber-500/50 animate-pulse'
+                        : 'bg-primary/10 border-primary/30'
+                    }`}>
+                      {connectionState === 'connecting' ? (
+                        <Loader2 className="w-12 h-12 text-amber-500 animate-spin" />
+                      ) : connectionState === 'connected' ? (
+                        <CheckCircle2 className="w-12 h-12 text-green-500" />
+                      ) : (
+                        <Smartphone className="w-12 h-12 text-primary" />
+                      )}
+                    </div>
+
+                    <div className="space-y-2">
+                      {connectionState === 'disconnected' && (
+                        <p className="text-muted-foreground">
+                          Connect your cell phone via USB to begin analysis.
+                        </p>
+                      )}
+                      {connectionState === 'connecting' && (
+                        <p className="text-amber-500 font-mono text-sm animate-pulse">
+                          Waiting for device selection...
+                        </p>
+                      )}
+                      {connectionState === 'connected' && (
+                        <div className="space-y-1">
+                          <p className="text-green-500 font-mono text-sm">
+                            Device connected successfully
+                          </p>
+                          {connectedDevice && (
+                            <p className="text-muted-foreground text-xs">
+                              {connectedDevice}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
+
+                  {/* Begin Scan Button - Only works after device is connected */}
                   <Button
                     variant="hero"
                     size="xl"
-                    onClick={startScan}
+                    onClick={connectionState === 'connected' ? startScan : connectDevice}
                     className="w-full max-w-xs"
                   >
-                    <Search className="w-5 h-5 mr-2" />
-                    Begin Secure Scan
+                    {connectionState === 'connected' ? (
+                      <>
+                        <Search className="w-5 h-5 mr-2" />
+                        Begin Secure Scan
+                      </>
+                    ) : (
+                      <>
+                        <Usb className="w-5 h-5 mr-2" />
+                        Begin Secure Scan
+                      </>
+                    )}
                   </Button>
+
+                  {/* Progress indicator at 0% */}
+                  <div className="pt-4">
+                    <div className="text-4xl font-mono font-bold text-primary/50">0%</div>
+                  </div>
                 </div>
               )}
 
@@ -168,7 +261,7 @@ const SpywareScan = () => {
                       <AlertTriangle className="w-8 h-8 text-destructive flex-shrink-0" />
                       <div>
                         <h3 className="text-destructive font-mono font-bold text-lg">SECURITY WARNING</h3>
-                        <p className="text-destructive/80 text-sm">Potential spyware indicators detected</p>
+                        <p className="text-destructive/80 text-sm">Potential spyware indicators detected.</p>
                       </div>
                     </div>
                   </div>
@@ -192,16 +285,16 @@ const SpywareScan = () => {
 
                   {/* CTAs */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                    <a href="https://calendly.com/digitalforensics" target="_blank">
+                    <a href="tel:8586923306">
                       <Button variant="hero" className="w-full">
                         <Phone className="w-4 h-4 mr-2" />
-                        Call / Text Now
+                        Call / Text 858-692-3306
                       </Button>
                     </a>
-                    <a href="https://calendly.com/digitalforensics" target="_blank">
+                    <a href="https://calendly.com/digitalforensics" target="_blank" rel="noopener noreferrer">
                       <Button variant="forensic" className="w-full">
                         <Calendar className="w-4 h-4 mr-2" />
-                        Book Forensic Appointment
+                        Book Forensic Appointment →
                       </Button>
                     </a>
                   </div>
