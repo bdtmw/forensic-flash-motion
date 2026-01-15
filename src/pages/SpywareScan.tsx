@@ -7,11 +7,27 @@ import GlitchText from '@/components/GlitchText';
 import { Link } from 'react-router-dom';
 import logoImage from '@/assets/logo.png';
 
+// WebUSB API types
+interface USBDevice {
+  productName?: string;
+  manufacturerName?: string;
+}
+
+interface USB {
+  requestDevice(options: { filters: object[] }): Promise<USBDevice>;
+}
+
+declare global {
+  interface Navigator {
+    usb?: USB;
+  }
+}
 const SpywareScan = () => {
   const [connectionState, setConnectionState] = useState<'disconnected' | 'connecting' | 'connected'>('disconnected');
   const [scanState, setScanState] = useState<'idle' | 'scanning' | 'complete'>('idle');
   const [progress, setProgress] = useState(0);
   const [currentCheck, setCurrentCheck] = useState('');
+  const [connectedDevice, setConnectedDevice] = useState<string | null>(null);
 
   const scanChecks = [
     'Analyzing system processes...',
@@ -26,12 +42,30 @@ const SpywareScan = () => {
     'Final security assessment...',
   ];
 
-  // Simulate device connection
-  const connectDevice = () => {
-    setConnectionState('connecting');
-    setTimeout(() => {
+  // Request USB device connection using WebUSB API
+  const connectDevice = async () => {
+    try {
+      // Check if WebUSB is supported
+      if (!navigator.usb) {
+        alert('WebUSB is not supported in this browser. Please use Chrome or Edge.');
+        return;
+      }
+
+      setConnectionState('connecting');
+
+      // Request USB device - this will show the browser's device picker
+      const device = await navigator.usb.requestDevice({
+        filters: [] // Empty filters to show all devices
+      });
+
+      // Device selected successfully
+      setConnectedDevice(device.productName || device.manufacturerName || 'Unknown Device');
       setConnectionState('connected');
-    }, 2000);
+    } catch (error) {
+      // User cancelled or no device selected
+      console.log('Device connection cancelled or failed:', error);
+      setConnectionState('disconnected');
+    }
   };
 
   useEffect(() => {
@@ -65,6 +99,7 @@ const SpywareScan = () => {
     setProgress(0);
     setCurrentCheck('');
     setConnectionState('disconnected');
+    setConnectedDevice(null);
   };
 
   return (
@@ -135,43 +170,48 @@ const SpywareScan = () => {
 
                     <div className="space-y-2">
                       {connectionState === 'disconnected' && (
-                        <>
-                          <p className="text-muted-foreground">
-                            Connect your cell phone via USB to begin analysis.
-                          </p>
-                          <Button
-                            variant="outline"
-                            onClick={connectDevice}
-                            className="mt-4"
-                          >
-                            <Usb className="w-4 h-4 mr-2" />
-                            Connect Device
-                          </Button>
-                        </>
+                        <p className="text-muted-foreground">
+                          Connect your cell phone via USB to begin analysis.
+                        </p>
                       )}
                       {connectionState === 'connecting' && (
                         <p className="text-amber-500 font-mono text-sm animate-pulse">
-                          Detecting device...
+                          Waiting for device selection...
                         </p>
                       )}
                       {connectionState === 'connected' && (
-                        <p className="text-green-500 font-mono text-sm">
-                          Device connected successfully
-                        </p>
+                        <div className="space-y-1">
+                          <p className="text-green-500 font-mono text-sm">
+                            Device connected successfully
+                          </p>
+                          {connectedDevice && (
+                            <p className="text-muted-foreground text-xs">
+                              {connectedDevice}
+                            </p>
+                          )}
+                        </div>
                       )}
                     </div>
                   </div>
 
-                  {/* Begin Scan Button */}
+                  {/* Begin Scan Button - Only works after device is connected */}
                   <Button
                     variant="hero"
                     size="xl"
-                    onClick={startScan}
-                    disabled={connectionState !== 'connected'}
-                    className="w-full max-w-xs disabled:opacity-50 disabled:cursor-not-allowed"
+                    onClick={connectionState === 'connected' ? startScan : connectDevice}
+                    className="w-full max-w-xs"
                   >
-                    <Search className="w-5 h-5 mr-2" />
-                    Begin Secure Scan
+                    {connectionState === 'connected' ? (
+                      <>
+                        <Search className="w-5 h-5 mr-2" />
+                        Begin Secure Scan
+                      </>
+                    ) : (
+                      <>
+                        <Usb className="w-5 h-5 mr-2" />
+                        Begin Secure Scan
+                      </>
+                    )}
                   </Button>
 
                   {/* Progress indicator at 0% */}
