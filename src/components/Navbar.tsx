@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 import logo from '@/assets/logo2.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +21,6 @@ const Navbar = () => {
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
     { label: 'Tools', href: '#clients' },
-    { label: 'Spyware Scan', href: '/spyware-scan' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -56,6 +56,10 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
+               <Link to="/spyware-scan"  className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wider uppercase">
+                    Free Spyware Check
+                  
+                </Link>
               <a href="https://calendly.com/digitalforensics" target="_blank">
                 <Button
                   variant="forensic"
