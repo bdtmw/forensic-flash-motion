@@ -6,6 +6,8 @@ import ParticleField from '@/components/ParticleField';
 import GlitchText from '@/components/GlitchText';
 import { Link } from 'react-router-dom';
 import logoImage from '@/assets/logo.png';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 
 // WebUSB API types
 interface USBDevice {
@@ -108,7 +110,7 @@ const SpywareScan = () => {
       <ScanlineOverlay />
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
+      {/* <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/20">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <img src={logoImage} alt="Octo Digital Forensics" className="h-10 w-auto" />
@@ -117,7 +119,9 @@ const SpywareScan = () => {
             <Button variant="ghost" size="sm">← Back to Home</Button>
           </Link>
         </div>
-      </header>
+      </header> */}
+      {/* Navigation */}
+      <Navbar />
 
       {/* Main Content */}
       <main className="pt-24 pb-16">
@@ -152,13 +156,12 @@ const SpywareScan = () => {
 
                   {/* Device connection status */}
                   <div className="space-y-4">
-                    <div className={`w-24 h-24 mx-auto rounded-full border-2 flex items-center justify-center transition-all duration-500 ${
-                      connectionState === 'connected' 
-                        ? 'bg-green-500/10 border-green-500/50' 
+                    <div className={`w-24 h-24 mx-auto rounded-full border-2 flex items-center justify-center transition-all duration-500 ${connectionState === 'connected'
+                        ? 'bg-green-500/10 border-green-500/50'
                         : connectionState === 'connecting'
-                        ? 'bg-amber-500/10 border-amber-500/50 animate-pulse'
-                        : 'bg-primary/10 border-primary/30'
-                    }`}>
+                          ? 'bg-amber-500/10 border-amber-500/50 animate-pulse'
+                          : 'bg-primary/10 border-primary/30'
+                      }`}>
                       {connectionState === 'connecting' ? (
                         <Loader2 className="w-12 h-12 text-amber-500 animate-spin" />
                       ) : connectionState === 'connected' ? (
@@ -322,6 +325,8 @@ const SpywareScan = () => {
           </div>
         </div>
       </main>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
