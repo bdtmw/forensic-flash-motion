@@ -21,10 +21,10 @@ const portfolioItems = [
     description: 'Custom investigation and data recovery software',
   },
   {
-    title: 'Corporate Website',
-    category: 'Web Design',
+    title: 'Computer Forensics',
+    category: 'Computer Forensics',
     image: portfolioCorporate,
-    description: 'Modern responsive website with CMS integration',
+    description: 'We preform forensic extractions of any computer or cell phone',
   },
   {
     title: 'Brand Identity System',
