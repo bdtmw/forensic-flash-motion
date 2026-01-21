@@ -7,7 +7,7 @@ import GlitchText from '@/components/GlitchText';
 import { Link } from 'react-router-dom';
 import logoImage from '@/assets/logo.png';
 import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import NavbarSpy from '@/components/NavbarSpy';
 
 // WebUSB API types
 interface USBDevice {
@@ -121,7 +121,7 @@ const SpywareScan = () => {
         </div>
       </header> */}
       {/* Navigation */}
-      <Navbar />
+      <NavbarSpy />
 
       {/* Main Content */}
       <main className="pt-24 pb-16">
@@ -157,10 +157,10 @@ const SpywareScan = () => {
                   {/* Device connection status */}
                   <div className="space-y-4">
                     <div className={`w-24 h-24 mx-auto rounded-full border-2 flex items-center justify-center transition-all duration-500 ${connectionState === 'connected'
-                        ? 'bg-green-500/10 border-green-500/50'
-                        : connectionState === 'connecting'
-                          ? 'bg-amber-500/10 border-amber-500/50 animate-pulse'
-                          : 'bg-primary/10 border-primary/30'
+                      ? 'bg-green-500/10 border-green-500/50'
+                      : connectionState === 'connecting'
+                        ? 'bg-amber-500/10 border-amber-500/50 animate-pulse'
+                        : 'bg-primary/10 border-primary/30'
                       }`}>
                       {connectionState === 'connecting' ? (
                         <Loader2 className="w-12 h-12 text-amber-500 animate-spin" />
@@ -202,7 +202,7 @@ const SpywareScan = () => {
                     variant="hero"
                     size="xl"
                     onClick={connectionState === 'connected' ? startScan : connectDevice}
-                    className="w-full max-w-xs"
+                    className="w-full max-w-xs md:text-[17px] text-[11px]"
                   >
                     {connectionState === 'connected' ? (
                       <>
@@ -221,6 +221,20 @@ const SpywareScan = () => {
                   <div className="pt-4">
                     <div className="text-4xl font-mono font-bold text-primary/50">0%</div>
                   </div>
+                  <a href="https://chatgpt.com/g/g-696f6a61647c8191ac21b4759ad1f60c-spyware-digital-forensics-expert-octodf" target='_blank'>
+                    <Button
+                      variant="forensic"
+                      size="xl"
+                      className="w-full mt-3 md:text-[12px] text-[11px] max-w-xs">
+                      <Search className="w-5 h-5 mr-2" />
+                      Free Spyware Risk Check (AI-Guided)
+                    </Button>
+                  </a>
+                  <p>
+                    <small>
+                      Unsure if your phone is being monitored or if digital evidence still exists? Start with a confidential, AI-guided risk check by Octo Digital Forensics
+                    </small>
+                  </p>
                 </div>
               )}
 
